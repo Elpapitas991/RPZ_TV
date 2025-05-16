@@ -2,25 +2,85 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>TNT Sports Chile - RPZ TV</title>
+  <title>RPZ TV - TNT Sports 1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* Estilos generales y cabecera */
     body {
-      margin: 0; padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
       background-color: #0a0a0a;
-      color: #fff;
+      color: white;
       text-align: center;
     }
+
     header {
-      background-color: #1a1a1a;
-      padding: 15px;
+      background-color: #333;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    h1 {
-      margin: 0;
+    
+    .site-title {
       font-size: 24px;
+      margin: 0;
     }
+
+    nav {
+      display: flex;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #444;
+      color: white;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 30px;
+      color: white;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+      nav {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+      }
+      nav.active {
+        display: flex;
+      }
+      nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Botones para seleccionar opción */
     .button-group {
       margin: 20px 0;
     }
@@ -38,28 +98,65 @@
     .button-group button:hover {
       background-color: #555;
     }
-    .player {
-      display: none;
-      margin: 20px auto;
-      max-width: 90%;
+
+    /* Contenedor del iframe */
+    .contenedor {
+      width: 90%;
+      max-width: 1000px;
+      height: 500px;
+      margin: 0 auto 20px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #f76307;
+      background-color: black;
     }
+
     iframe {
       width: 100%;
-      height: 500px;
+      height: 100%;
       border: none;
-      border-radius: 10px;
+      display: block;
     }
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #777;
+
+    /* Chat container */
+    .chat-container {
+      width: 300px;
+      height: 320px;
+      margin: 0 auto 30px auto;
     }
+
+    /* Link volver */
+    .volver {
+      color: #0ff;
+      display: inline-block;
+      margin-bottom: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .volver:hover {
+      color: #08c;
+    }
+
   </style>
 </head>
 <body>
+
   <header>
-    <h1>TNT Sports Chile - RPZ TV</h1>
+    <div class="site-title">RPZ TV</div>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="canal1.html">TNT Sports 1</a>
+      <a href="canal2.html">TNT Sports 2</a>
+      <a href="canal3.html">ESPN</a>
+      <a href="canal7.html">ESPN Premium</a>
+      <a href="canal4.html">Fox Sports</a>
+      <a href="canal5.html">Fox Sports 2</a>
+    </nav>
   </header>
+
+  <h1>RPZ TV - TNT Sports 1</h1>
 
   <div class="button-group">
     <button onclick="mostrarOpcion('op1')">Opción 1</button>
@@ -67,23 +164,35 @@
     <button onclick="mostrarOpcion('op3')">Opción 3</button>
   </div>
 
-  <div id="op1" class="player">
+  <div id="op1" class="contenedor">
     <iframe id="iframe1" src="https://embed.sdfgnksbounce.com/embed2/tntsportschile.html" allowfullscreen></iframe>
   </div>
 
-  <div id="op2" class="player">
+  <div id="op2" class="contenedor" style="display:none;">
     <iframe id="iframe2" src="https://embed.sdfgnksbounce.com/embed/tntsportschile.html" allowfullscreen></iframe>
   </div>
 
-  <div id="op3" class="player">
+  <div id="op3" class="contenedor" style="display:none;">
     <iframe id="iframe3" src="https://www.capoplayer.net/play/tntchile.php" allowfullscreen></iframe>
   </div>
 
-  <footer>
-    RPZ TV &copy; 2025 - Todos los derechos reservados
-  </footer>
+  <div class="chat-container">
+    <script id="cid0020000407493186915" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" 
+      style="width: 295px; height: 317px;">
+      {"handle":"rpztv","arch":"js","styles":{"a":"ffffff","b":100,"c":"000000","d":"000000","k":"ffffff","l":"ffffff","m":"ffffff","p":"10","q":"ffffff","r":100,"usricon":0}}
+    </script>
+  </div>
+
+  <a href="index.html" class="volver">Volver al inicio</a>
 
   <script>
+    // Función menú responsive
+    function toggleMenu() {
+      const nav = document.querySelector('nav');
+      nav.classList.toggle('active');
+    }
+
+    // URLs originales para reiniciar iframe y detener reproducción
     const originalSources = {
       op1: "https://embed.sdfgnksbounce.com/embed2/tntsportschile.html",
       op2: "https://embed.sdfgnksbounce.com/embed/tntsportschile.html",
@@ -91,14 +200,14 @@
     };
 
     function mostrarOpcion(opcionActiva) {
-      ['op1', 'op2', 'op3'].forEach(opcion => {
+      ['op1','op2','op3'].forEach(opcion => {
         const div = document.getElementById(opcion);
         const iframe = div.querySelector('iframe');
-        if (opcion === opcionActiva) {
+        if(opcion === opcionActiva){
           div.style.display = 'block';
         } else {
           div.style.display = 'none';
-          // Reiniciar iframe para detener la reproducción
+          // Para detener la reproducción recargamos el iframe
           iframe.src = "";
           setTimeout(() => {
             iframe.src = originalSources[opcion];
@@ -106,8 +215,7 @@
         }
       });
     }
-
-    window.onload = () => mostrarOpcion('op1');
   </script>
+
 </body>
 </html>
