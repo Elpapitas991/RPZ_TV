@@ -1,78 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Canal 1 - RPZ TV</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Estilos -->
+  <meta charset="UTF-8" />
+  <title>TNT Sports Chile - RPZ TV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #0a0a0a;
       color: #fff;
       text-align: center;
     }
-
     header {
       background-color: #1a1a1a;
       padding: 15px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
-
     h1 {
       margin: 0;
       font-size: 24px;
     }
-
     .button-group {
       margin: 20px 0;
-      flex-wrap: wrap;
     }
-
     .button-group button {
       background-color: #333;
       border: none;
       color: white;
       padding: 10px 20px;
-      margin: 5px 10px;
+      margin: 0 10px;
       font-size: 16px;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
     .button-group button:hover {
       background-color: #555;
     }
-
     .player {
       display: none;
       margin: 20px auto;
       max-width: 90%;
     }
-
-    iframe, .video-js {
+    iframe {
       width: 100%;
       height: 500px;
       border: none;
       border-radius: 10px;
     }
-
     footer {
       margin-top: 40px;
       font-size: 14px;
       color: #777;
     }
   </style>
-
-  <!-- Video.js CSS -->
-  <link href="https://vjs.zencdn.net/8.9.0/video-js.css" rel="stylesheet" />
 </head>
 <body>
-
   <header>
     <h1>TNT Sports Chile - RPZ TV</h1>
   </header>
@@ -81,11 +65,8 @@
     <button onclick="mostrarOpcion('op1')">Opción 1</button>
     <button onclick="mostrarOpcion('op2')">Opción 2</button>
     <button onclick="mostrarOpcion('op3')">Opción 3</button>
-    <button onclick="mostrarOpcion('op4')">Opción 4</button>
-    <button onclick="mostrarOpcion('op5')">Opción 5</button>
   </div>
 
-  <!-- Opciones con iframe -->
   <div id="op1" class="player">
     <iframe id="iframe1" src="https://embed.sdfgnksbounce.com/embed2/tntsportschile.html" allowfullscreen></iframe>
   </div>
@@ -98,25 +79,10 @@
     <iframe id="iframe3" src="https://www.capoplayer.net/play/tntchile.php" allowfullscreen></iframe>
   </div>
 
-  <!-- Opciones con reproductor propio -->
-  <div id="op4" class="player">
-    <video id="player4" class="video-js vjs-default-skin" controls autoplay preload="auto" data-setup='{}'>
-      <source src="http://hidra.live/live/psjfiyen/7lpE1se7O5/34676.ts" type="application/x-mpegURL" />
-    </video>
-  </div>
-
-  <div id="op5" class="player">
-    <video id="player5" class="video-js vjs-default-skin" controls autoplay preload="auto" data-setup='{}'>
-      <source src="http://hidra.live/live/psjfiyen/7lpE1se7O5/34674.ts" type="application/x-mpegURL" />
-    </video>
-  </div>
-
   <footer>
     RPZ TV &copy; 2025 - Todos los derechos reservados
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
   <script>
     const originalSources = {
       op1: "https://embed.sdfgnksbounce.com/embed2/tntsportschile.html",
@@ -125,36 +91,23 @@
     };
 
     function mostrarOpcion(opcionActiva) {
-      ['op1', 'op2', 'op3', 'op4', 'op5'].forEach((opcion, index) => {
+      ['op1', 'op2', 'op3'].forEach(opcion => {
         const div = document.getElementById(opcion);
-        if (div) {
-          if (opcion === opcionActiva) {
-            div.style.display = 'block';
-          } else {
-            div.style.display = 'none';
-
-            // Si es iframe, lo reinicia
-            const iframe = div.querySelector('iframe');
-            if (iframe && originalSources[opcion]) {
-              iframe.src = "";
-              setTimeout(() => {
-                iframe.src = originalSources[opcion];
-              }, 100);
-            }
-
-            // Si es reproductor de video, lo pausa
-            const video = div.querySelector('video');
-            if (video) {
-              video.pause();
-              video.currentTime = 0;
-            }
-          }
+        const iframe = div.querySelector('iframe');
+        if (opcion === opcionActiva) {
+          div.style.display = 'block';
+        } else {
+          div.style.display = 'none';
+          // Reiniciar iframe para detener la reproducción
+          iframe.src = "";
+          setTimeout(() => {
+            iframe.src = originalSources[opcion];
+          }, 100);
         }
       });
     }
 
     window.onload = () => mostrarOpcion('op1');
   </script>
-
 </body>
 </html>
