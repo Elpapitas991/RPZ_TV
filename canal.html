@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Canal 1 - RPZ TV</title>
+  <title>TNT Sports Chile - RPZ TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -78,15 +78,15 @@
   </div>
 
   <div id="op1" class="player">
-    <iframe src="https://embed.sdfgnksbounce.com/embed2/tntsportschile.html" allowfullscreen></iframe>
+    <iframe id="iframe1" src="https://embed.sdfgnksbounce.com/embed2/tntsportschile.html" allowfullscreen></iframe>
   </div>
 
   <div id="op2" class="player">
-    <iframe src="https://embed.sdfgnksbounce.com/embed/tntsportschile.html" allowfullscreen></iframe>
+    <iframe id="iframe2" src="https://embed.sdfgnksbounce.com/embed/tntsportschile.html" allowfullscreen></iframe>
   </div>
 
   <div id="op3" class="player">
-    <iframe src="https://www.capoplayer.net/play/tntchile.php" allowfullscreen></iframe>
+    <iframe id="iframe3" src="https://www.capoplayer.net/play/tntchile.php" allowfullscreen></iframe>
   </div>
 
   <footer>
@@ -94,13 +94,28 @@
   </footer>
 
   <script>
-    function mostrarOpcion(opcion) {
-      const players = document.querySelectorAll('.player');
-      players.forEach(p => p.style.display = 'none');
-      document.getElementById(opcion).style.display = 'block';
+    const originalSources = {
+      op1: "https://embed.sdfgnksbounce.com/embed2/tntsportschile.html",
+      op2: "https://embed.sdfgnksbounce.com/embed/tntsportschile.html",
+      op3: "https://www.capoplayer.net/play/tntchile.php"
+    };
+
+    function mostrarOpcion(opcionActiva) {
+      ['op1', 'op2', 'op3'].forEach((opcion, index) => {
+        const div = document.getElementById(opcion);
+        const iframe = div.querySelector('iframe');
+        if (opcion === opcionActiva) {
+          div.style.display = 'block';
+        } else {
+          div.style.display = 'none';
+          iframe.src = ""; // vacía el src para detenerlo
+          setTimeout(() => {
+            iframe.src = originalSources[opcion]; // lo vuelve a cargar después
+          }, 100);
+        }
+      });
     }
 
-    // Mostrar la primera opción por defecto al cargar
     window.onload = () => mostrarOpcion('op1');
   </script>
 
