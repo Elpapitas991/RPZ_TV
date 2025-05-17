@@ -5,6 +5,7 @@
   <title>RPZ TV - TNT Sports Premium</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* Estilos generales y cabecera */
     body {
       margin: 0;
       padding: 0;
@@ -79,6 +80,7 @@
       }
     }
 
+    /* Botones para seleccionar opción */
     .button-group {
       margin: 20px 0;
     }
@@ -97,6 +99,7 @@
       background-color: #555;
     }
 
+    /* Contenedor del iframe */
     .contenedor {
       width: 90%;
       max-width: 1000px;
@@ -115,46 +118,14 @@
       display: block;
     }
 
-    .radios-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-      margin-bottom: 40px;
-    }
-
-    .tarjeta-radio {
-      background-color: #222;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 160px;
-      color: white;
-    }
-
-    .tarjeta-radio img {
-      height: 35px;
-      margin-bottom: 8px;
-      filter: brightness(1.2);
-    }
-
-    .tarjeta-radio audio {
-      width: 140px;
-      height: 25px;
-      background-color: black;
-      border-radius: 5px;
-    }
-
+    /* Chat container */
     .chat-container {
       width: 300px;
       height: 320px;
       margin: 0 auto 30px auto;
     }
 
+    /* Link volver */
     .volver {
       color: #0ff;
       display: inline-block;
@@ -165,6 +136,42 @@
     }
     .volver:hover {
       color: #08c;
+    }
+
+    /* Contenedor radios */
+    .contenedor-radios {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Tarjetas para radios */
+    .tarjeta-radio {
+      background-color: #222;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 200px; /* Más ancho */
+      color: white;
+    }
+
+    .tarjeta-radio img {
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    .tarjeta-radio audio {
+      width: 180px; /* Más ancho para mejor control */
+      height: 25px;
+      background-color: black;
+      border-radius: 5px;
     }
   </style>
 </head>
@@ -203,20 +210,19 @@
     <iframe id="iframe3" src="https://www.capoplayer.net/play/tntchile.php" allowfullscreen></iframe>
   </div>
 
-  <!-- Radios en tarjetas debajo -->
-  <div class="radios-container">
+  <!-- Radios debajo de los reproductores -->
+  <div class="contenedor-radios">
     <div class="tarjeta-radio">
-      <img src="images/fm7.png" alt="FM7" />
+      <img src="images/fm7.png" alt="FM7">
       <audio controls>
-        <source src="https://sp1.streamingssl.com/8034/stream" type="audio/mpeg" />
+        <source src="https://sp1.streamingssl.com/8034/stream" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
       </audio>
     </div>
-
     <div class="tarjeta-radio">
-      <img src="images/mariareina.png" alt="Radio María Reina" />
+      <img src="images/mariareina.png" alt="Radio Maria Reina">
       <audio controls>
-        <source src="https://mediacp.supportinet.cl:2020/stream/8020" type="audio/mpeg" />
+        <source src="https://mediacp.supportinet.cl:2020/stream/8020" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
       </audio>
     </div>
@@ -232,11 +238,13 @@
   <a href="index.html" class="volver">Volver al inicio</a>
 
   <script>
+    // Función menú responsive
     function toggleMenu() {
       const nav = document.querySelector('nav');
       nav.classList.toggle('active');
     }
 
+    // URLs originales para reiniciar iframe y detener reproducción
     const originalSources = {
       op1: "https://embed.sdfgnksbounce.com/embed2/tntsportschile.html",
       op2: "https://embed.sdfgnksbounce.com/embed/tntsportschile.html",
@@ -251,6 +259,7 @@
           div.style.display = 'block';
         } else {
           div.style.display = 'none';
+          // Para detener la reproducción recargamos el iframe
           iframe.src = "";
           setTimeout(() => {
             iframe.src = originalSources[opcion];
