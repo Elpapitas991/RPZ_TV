@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>RPZ TV - Transmisiones</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .boton-opcion {
+      background-color: #ffffff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .boton-opcion:hover {
+      background-color: #e6e6e6;
+    }
+
+    .contenido {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .contenido-activo {
+      display: block;
+    }
+
+    iframe, video {
+      width: 100%;
+      max-width: 640px;
+      height: 360px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .radios-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .tarjeta-radio {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 160px;
+    }
+
+    .tarjeta-radio img {
+      height: 35px;
+      margin-bottom: 8px;
+    }
+
+    .tarjeta-radio audio {
+      width: 140px;
+      height: 25px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>RPZ TV - Transmisiones</h1>
+
+  <!-- Botones de selección -->
+  <div class="botones">
+    <div class="boton-opcion" onclick="mostrarContenido('canal1')">Canal 1 (TNT Sports Premium)</div>
+    <div class="boton-opcion" onclick="mostrarContenido('canal2')">Canal 2 (OK.ru Video)</div>
+    <div class="boton-opcion" onclick="mostrarContenido('canal3')">Canal 3 (YouTube Live)</div>
+  </div>
+
+  <!-- Contenido Canal 1 -->
+  <div id="canal1" class="contenido">
+    <iframe src="https://ok.ru/videoembed/1234567890" allowfullscreen></iframe>
+
+    <!-- Radios debajo -->
+    <div class="radios-container">
+      <div class="tarjeta-radio">
+        <img src="images/fm7.png" alt="FM7" />
+        <audio controls>
+          <source src="https://sp1.streamingssl.com/8034/stream" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+
+      <div class="tarjeta-radio">
+        <img src="images/mariareina.png" alt="Radio María Reina" />
+        <audio controls>
+          <source src="https://mediacp.supportinet.cl:2020/stream/8020" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido Canal 2 -->
+  <div id="canal2" class="contenido">
+    <iframe src="https://www.youtube.com/embed/live_stream?channel=UCXXXXXX" allowfullscreen></iframe>
+
+    <!-- Radios debajo -->
+    <div class="radios-container">
+      <div class="tarjeta-radio">
+        <img src="images/fm7.png" alt="FM7" />
+        <audio controls>
+          <source src="https://sp1.streamingssl.com/8034/stream" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+
+      <div class="tarjeta-radio">
+        <img src="images/mariareina.png" alt="Radio María Reina" />
+        <audio controls>
+          <source src="https://mediacp.supportinet.cl:2020/stream/8020" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido Canal 3 -->
+  <div id="canal3" class="contenido">
+    <video controls autoplay muted style="max-width:640px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+      <source src="https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4" type="video/mp4" />
+      Tu navegador no soporta el elemento de video.
+    </video>
+
+    <!-- Radios debajo -->
+    <div class="radios-container">
+      <div class="tarjeta-radio">
+        <img src="images/fm7.png" alt="FM7" />
+        <audio controls>
+          <source src="https://sp1.streamingssl.com/8034/stream" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+
+      <div class="tarjeta-radio">
+        <img src="images/mariareina.png" alt="Radio María Reina" />
+        <audio controls>
+          <source src="https://mediacp.supportinet.cl:2020/stream/8020" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function mostrarContenido(id) {
+      // Oculta todos los contenidos
+      document.querySelectorAll('.contenido').forEach(div => {
+        div.classList.remove('contenido-activo');
+      });
+      // Muestra el seleccionado
+      document.getElementById(id).classList.add('contenido-activo');
+    }
+  </script>
+
+</body>
+</html>
