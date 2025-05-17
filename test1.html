@@ -5,7 +5,6 @@
   <title>RPZ TV - TNT Sports Premium</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Estilos generales y cabecera */
     body {
       margin: 0;
       padding: 0;
@@ -80,7 +79,6 @@
       }
     }
 
-    /* Botones para seleccionar opción */
     .button-group {
       margin: 20px 0;
     }
@@ -99,7 +97,6 @@
       background-color: #555;
     }
 
-    /* Contenedor del iframe */
     .contenedor {
       width: 90%;
       max-width: 1000px;
@@ -118,27 +115,6 @@
       display: block;
     }
 
-    /* Chat container */
-    .chat-container {
-      width: 300px;
-      height: 320px;
-      margin: 0 auto 30px auto;
-    }
-
-    /* Link volver */
-    .volver {
-      color: #0ff;
-      display: inline-block;
-      margin-bottom: 40px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    .volver:hover {
-      color: #08c;
-    }
-
-    /* Radios abajo en tarjetas */
     .radios-container {
       display: flex;
       justify-content: center;
@@ -169,15 +145,120 @@
     .tarjeta-radio audio {
       width: 140px;
       height: 25px;
-      overflow: hidden;
       background-color: black;
       border-radius: 5px;
     }
 
+    .chat-container {
+      width: 300px;
+      height: 320px;
+      margin: 0 auto 30px auto;
+    }
+
+    .volver {
+      color: #0ff;
+      display: inline-block;
+      margin-bottom: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .volver:hover {
+      color: #08c;
+    }
   </style>
 </head>
 <body>
 
   <header>
     <div class="site-title">RPZ TV</div>
-    <div class="menu-icon" onclick="toggleMenu()">&#977
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="canal1.html">TNT Sports Premium</a>
+      <a href="canal3.html">ESPN</a>
+      <a href="canal7.html">ESPN Premium</a>
+      <a href="canal4.html">Fox Sports</a>
+      <a href="canal5.html">Fox Sports 2</a>
+    </nav>
+  </header>
+
+  <h1>RPZ TV - TNT Sports Premium</h1>
+
+  <div class="button-group">
+    <button onclick="mostrarOpcion('op1')">Opción 1</button>
+    <button onclick="mostrarOpcion('op2')">Opción 2</button>
+    <button onclick="mostrarOpcion('op3')">Opción 3</button>
+  </div>
+
+  <div id="op1" class="contenedor">
+    <iframe id="iframe1" src="https://embed.sdfgnksbounce.com/embed2/tntsportschile.html" allowfullscreen></iframe>
+  </div>
+
+  <div id="op2" class="contenedor" style="display:none;">
+    <iframe id="iframe2" src="https://embed.sdfgnksbounce.com/embed/tntsportschile.html" allowfullscreen></iframe>
+  </div>
+
+  <div id="op3" class="contenedor" style="display:none;">
+    <iframe id="iframe3" src="https://www.capoplayer.net/play/tntchile.php" allowfullscreen></iframe>
+  </div>
+
+  <!-- Radios en tarjetas debajo -->
+  <div class="radios-container">
+    <div class="tarjeta-radio">
+      <img src="images/fm7.png" alt="FM7" />
+      <audio controls>
+        <source src="https://sp1.streamingssl.com/8034/stream" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+
+    <div class="tarjeta-radio">
+      <img src="images/mariareina.png" alt="Radio María Reina" />
+      <audio controls>
+        <source src="https://mediacp.supportinet.cl:2020/stream/8020" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+  </div>
+
+  <div class="chat-container">
+    <script id="cid0020000407493186915" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" 
+      style="width: 295px; height: 317px;">
+      {"handle":"rpztv","arch":"js","styles":{"a":"ffffff","b":100,"c":"000000","d":"000000","k":"ffffff","l":"ffffff","m":"ffffff","p":"10","q":"ffffff","r":100,"usricon":0}}
+    </script>
+  </div>
+
+  <a href="index.html" class="volver">Volver al inicio</a>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('nav');
+      nav.classList.toggle('active');
+    }
+
+    const originalSources = {
+      op1: "https://embed.sdfgnksbounce.com/embed2/tntsportschile.html",
+      op2: "https://embed.sdfgnksbounce.com/embed/tntsportschile.html",
+      op3: "https://www.capoplayer.net/play/tntchile.php"
+    };
+
+    function mostrarOpcion(opcionActiva) {
+      ['op1','op2','op3'].forEach(opcion => {
+        const div = document.getElementById(opcion);
+        const iframe = div.querySelector('iframe');
+        if(opcion === opcionActiva){
+          div.style.display = 'block';
+        } else {
+          div.style.display = 'none';
+          iframe.src = "";
+          setTimeout(() => {
+            iframe.src = originalSources[opcion];
+          }, 100);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
