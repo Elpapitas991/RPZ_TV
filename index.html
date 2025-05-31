@@ -7,6 +7,9 @@
 <body style="background-color: #f76307;">
   <h1>Bienvenido a RPZ TV</h1>
   <p>Selecciona un canal:</p>
+  <a href="canal0.html">
+  <img src="images/FLTV.png" alt="Ir al Canal FLTV" style="width: 50px;">
+</a>
   <a href="canal1.html">
   <img src="images/boton2.jpg" alt="Ir al TNT Sport Premium" style="width: 50px;">
 </a>
@@ -25,10 +28,18 @@
   <a href="canal6.html">
   <img src="images/boton5.png" alt="Ir al Canal Libertadores CHV" style="width: 50px;">
 </a>
-  <div>
-<iframe id="ftv_iframe" name="ftv_iframe" src="https://widgets.futbolenlatv.com/partidos/equipo/cobreloa?color=ff4600&culture=es-CL" width="240" height="360" frameborder="0" scrolling="auto" style="margin-bottom: 10px"></iframe>
-<script id="cid0020000407493186915" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 295px;height: 317px;">{"handle":"rpztv","arch":"js","styles":{"a":"ffffff","b":100,"c":"000000","d":"000000","k":"ffffff","l":"ffffff","m":"ffffff","p":"10","q":"ffffff","r":100,"usricon":0}}</script>
-  </div>
+ <div style="display: flex; justify-content: center; align-items: flex-start; gap: 15px;">
+  <iframe id="ftv_iframe" name="ftv_iframe" 
+    src="https://widgets.futbolenlatv.com/partidos/equipo/cobreloa?color=ff4600&culture=es-CL" 
+    width="240" height="360" frameborder="0" scrolling="auto">
+  </iframe>
+  
+  <script id="cid0020000407493186915" data-cfasync="false" async 
+    src="//st.chatango.com/js/gz/emb.js" 
+    style="width: 295px; height: 317px;">
+  {"handle":"rpztv","arch":"js","styles":{"a":"ffffff","b":100,"c":"000000","d":"000000","k":"ffffff","l":"ffffff","m":"ffffff","p":"10","q":"ffffff","r":100,"usricon":0}}
+  </script>
+</div>
   
  
 </body>
