@@ -3,48 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <title>RPZ TV - Inicio</title>
+  <style>
+    body {
+      background-color: #f76307;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .channel-buttons a img {
+      width: 50px;
+      margin: 5px;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .channel-buttons a img:hover {
+      transform: scale(1.1);
+    }
+
+    .widget-chat-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap; /* hace que en móviles pase a vertical */
+      margin-top: 20px;
+    }
+
+    .widget-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      padding: 10px;
+    }
+
+    iframe, .chat-box {
+      border-radius: 8px;
+    }
+  </style>
 </head>
-<body style="background-color: #f76307; text-align: center;">
+<body>
 
   <h1>Bienvenido a RPZ TV</h1>
   <p>Selecciona un canal:</p>
 
   <!-- Botones de canales -->
-  <div style="margin-bottom: 20px;">
+  <div class="channel-buttons">
     <a href="canal0.html">
-      <img src="images/FLTV.png" alt="Ir al Canal FLTV" style="width: 50px;">
+      <img src="images/FLTV.png" alt="Ir al Canal FLTV">
     </a>
     <a href="canal1.html">
-      <img src="images/boton2.jpg" alt="Ir al TNT Sport Premium" style="width: 50px;">
+      <img src="images/boton2.jpg" alt="Ir al TNT Sport Premium">
     </a>
     <a href="canal3.html">
-      <img src="images/E1.png" alt="Ir al Canal ESPN" style="width: 50px;">
+      <img src="images/E1.png" alt="Ir al Canal ESPN">
     </a>
     <a href="canal7.html">
-      <img src="images/EP.png" alt="Ir al Canal ESPN PREMIUM" style="width: 50px;">
+      <img src="images/EP.png" alt="Ir al Canal ESPN PREMIUM">
     </a>
     <a href="canal4.html">
-      <img src="images/FS1.png" alt="Ir al Canal FOX SPORT" style="width: 50px;">
+      <img src="images/FS1.png" alt="Ir al Canal FOX SPORT">
     </a>
     <a href="canal5.html">
-      <img src="images/FS2.png" alt="Ir al Canal FOX SPORT 2" style="width: 50px;">
+      <img src="images/FS2.png" alt="Ir al Canal FOX SPORT 2">
     </a>
     <a href="canal6.html">
-      <img src="images/boton5.png" alt="Ir al Canal Libertadores CHV" style="width: 50px;">
+      <img src="images/boton5.png" alt="Ir al Canal Libertadores CHV">
     </a>
   </div>
 
-  <!-- Fila horizontal con el widget y el chat -->
-  <div style="display: flex; justify-content: center; align-items: flex-start; gap: 20px;">
-    <iframe id="ftv_iframe" name="ftv_iframe" 
-      src="https://widgets.futbolenlatv.com/partidos/equipo/cobreloa?color=ff4600&culture=es-CL" 
-      width="240" height="360" frameborder="0" scrolling="auto">
-    </iframe>
-    
-    <div>
+  <!-- Widget y Chat alineados -->
+  <div class="widget-chat-container">
+    <div class="widget-box">
+      <iframe id="ftv_iframe" name="ftv_iframe" 
+        src="https://widgets.futbolenlatv.com/partidos/equipo/cobreloa?color=ff4600&culture=es-CL" 
+        width="240" height="360" frameborder="0" scrolling="auto">
+      </iframe>
+    </div>
+
+    <div class="widget-box chat-box" style="width: 295px; height: 360px;">
       <script id="cid0020000407493186915" data-cfasync="false" async 
-        src="//st.chatango.com/js/gz/emb.js" 
-        style="width: 295px; height: 360px;">
+        src="//st.chatango.com/js/gz/emb.js">
       {"handle":"rpztv","arch":"js","styles":{"a":"ffffff","b":100,"c":"000000","d":"000000","k":"ffffff","l":"ffffff","m":"ffffff","p":"10","q":"ffffff","r":100,"usricon":0}}
       </script>
     </div>
