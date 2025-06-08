@@ -116,10 +116,7 @@
 </head>
 <body style="background-color: #f76307;">
   <h1>RPZ TV - PELOTA LIBRE</h1>
-
-  <div class="contenedor">
-    <!-- Opción 1: Iframe directo -->
-   <video id="video" controls autoplay muted></video>
+ <video id="video" controls autoplay muted></video>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
   const v = document.getElementById('video');
@@ -132,8 +129,9 @@
     v.src = url;
   }
 </script>
-
-   <iframe 
+  <div class="contenedor">
+    <!-- Opción 1: Iframe directo -->
+<iframe 
     src="https://pelotalibretv.com/embed/eventos.html?r=aHR0cHM6Ly9zdHJlYW0xOTZ0cC5jb20vZ2xvYmFsMS5waHA/c3RyZWFtPW1heDU=" 
     width="100%" 
     height="500" 
