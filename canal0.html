@@ -116,19 +116,14 @@
 </head>
 <body style="background-color: #f76307;">
   <h1>RPZ TV - PELOTA LIBRE</h1>
- <video id="video" controls autoplay muted></video>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script>
-  const v = document.getElementById('video');
-  const url = 'https://mdstrm.com/live-stream-playlist/631a1d95d3d77c082535e614.m3u8?uid=yOALyeToJpHusMExWYlqlIHTBUERvWt7&sid=lIiDrDGxUTkxjHn7Gxhejyo17Wb2Rvqh&pid=mq0W8uANnRDg5n5OWB7b5HkufDqaJKLR&pid_dvr=vJkni328jydm2ec4up1NRYfHpK1X9eIP&an=screen&at=web-app&av=v6.0.167&ref=https%3A%2F%2Fwww.mega.cl%2F&res=664x374&without_cookies=false&listenerid=&dnt=true&access_token=5LZCEtX2nyiIpVbhCUcen8JGjhrN4WbQX5cDjhiTOgJVifi0sU14ulaNv427nV14bzibT4xFEFc';
-  if (Hls.isSupported()) {
-    const hls = new Hls();
-    hls.loadSource(url);
-    hls.attachMedia(v);
-  } else if (v.canPlayType('application/vnd.apple.mpegurl')) {
-    v.src = url;
-  }
-</script>
+ <iframe 
+  src="https://mdstrm.com/live-stream/631a1d95d3d77c082535e614?autoplay=true" 
+  width="745" 
+  height="419" 
+  frameborder="0" 
+  allow="autoplay; fullscreen" 
+  allowfullscreen>
+</iframe>
 <video id="video" controls autoplay muted></video>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
